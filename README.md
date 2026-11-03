@@ -13,7 +13,6 @@ pip install jax[cuda12]
 
 This installs the following packages:
 - [MOTPY](https://github.com/ShaneFlandermeyer/MOTpy/tree/develop): Multi-object tracking in python
-- [flax-gnn](https://github.com/ShaneFlandermeyer/flax-gnn/tree/develop): Graph neural networks in Jax/Flax
 - [tdmpc2-jax](https://github.com/ShaneFlandermeyer/tdmpc2-jax/tree/develop): Model-based RL engine
 
 Next, activate the venv that contains the packages above. 
