@@ -1,0 +1,62 @@
+hydra:
+  job:
+    name: ${env.env_id}_s${seed}
+  run:
+    dir: outputs/${hydra.job.name}/${now:%Y-%m-%d_%H-%M-%S}
+
+seed: 0
+max_steps: 2_000_000
+buffer_size: 1_000_000
+save_interval_steps: 50_000
+log_interval_steps: 10_000
+
+env:
+  backend: gymnasium
+  env_id: MobileSurveillance-v0
+  num_envs: 4
+  utd_ratio: 1
+  asynchronous: True
+
+  dmc: { obs_type: state }
+
+encoder:
+  embed_dim: 100
+  num_layers: 3
+  learning_rate: 1e-4
+  tabulate: True
+  dtype: bfloat16
+
+world_model:
+  latent_dim: 512
+  value_dropout: 0.01
+  num_value_nets: 5
+  num_bins: 101
+  symlog_min: -10
+  symlog_max: 10
+  simnorm_dim: 8
+  learning_rate: 3e-4
+  predict_continues: False
+  dtype: bfloat16
+  max_grad_norm: 20
+  tabulate: False
+
+tdmpc2:
+  # Planning
+  horizon: 3
+  mppi_iterations: 6
+  population_size: 512
+  policy_prior_samples: 24
+  num_elites: 64
+  min_plan_std: 0.05
+  max_plan_std: 2
+  temperature: 0.5
+  # Optimization
+  batch_size: 256
+  discount: 0.97
+  rho: 0.5
+  consistency_loss_scale: 20
+  reward_loss_scale: 0.1
+  value_loss_scale: 0.1
+  continue_loss_scale: 0.0
+  entropy_coef: 1e-4
+  tau: 0.01
