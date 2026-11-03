@@ -1,5 +1,8 @@
 # rl-search-track
 
+![Graph state representation](./assets/graph_state.gif)
+![Beam Optimization Environment](./assets/beam_optimization.gif)
+
 ## Usage
 
 To run experiments, you must install this repository and its dependencies as follows:
