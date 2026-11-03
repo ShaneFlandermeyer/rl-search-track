@@ -1,4 +1,4 @@
-# rl-search-track
+# Relational RL for Autonomous Search-and-Track
 
 ![Graph state representation](./assets/graph_state.gif)
 ![Beam Optimization Environment](./assets/beam_optimization.gif)
